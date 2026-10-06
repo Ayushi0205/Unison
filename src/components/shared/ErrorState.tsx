@@ -14,7 +14,7 @@ interface ErrorStateProps {
 export function ErrorState({ message, onRetry }: ErrorStateProps) {
   return (
     <div className="flex flex-col items-center justify-center py-24 text-center">
-      {/* Ghost outline icon — matches designer's reference for error-on-load state. */}
+      {/* Ghost outline icon - matches designer's reference for error-on-load state. */}
       <svg className="w-16 h-16 text-gray-300 mb-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
         <path strokeLinecap="round" strokeLinejoin="round" d="M9 12.75c0 .414-.336.75-.75.75s-.75-.336-.75-.75.336-.75.75-.75.75.336.75.75zM16.5 12.75c0 .414-.336.75-.75.75s-.75-.336-.75-.75.336-.75.75-.75.75.336.75.75zM4 21V8a8 8 0 1116 0v13l-2.5-2-2.5 2-2.5-2-2.5 2-2.5-2L4 21z" />
       </svg>

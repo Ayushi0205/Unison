@@ -41,7 +41,7 @@ function compileTemplate(body: string, variables: { name: string; sampleValue?: 
     // No value → leave {{token}} in place; caught by the catch-all below
   }
   result = neutralizeAttributeTokens(result)
-  // Any remaining {{...}} are unfilled — render as amber chips so they're visually obvious
+  // Any remaining {{...}} are unfilled - render as amber chips so they're visually obvious
   result = result.replace(
     /\{\{([^}]+)\}\}/g,
     (_m, name) =>
@@ -64,13 +64,13 @@ export function TemplateDetailPage() {
   const [searchParams] = useSearchParams()
   const { user } = useCurrentUser()
   // Show a one-time callout when the user lands here after creating a new template.
-  // Reads the ?created=true param once on mount — dismissed locally, disappears on next visit.
+  // Reads the ?created=true param once on mount - dismissed locally, disappears on next visit.
   const [showCreatedCallout, setShowCreatedCallout] = useState(
     () => searchParams.get('created') === 'true',
   )
   const toast = useToast()
   const [confirmKind, setConfirmKind] = useState<'duplicate' | 'activate' | 'deactivate' | null>(null)
-  // Local lifecycle override — survives in-session state changes
+  // Local lifecycle override - survives in-session state changes
   const [localLifecycle, setLocalLifecycle] = useState<Lifecycle | null>(null)
 
   const baseTemplate = id ? getTemplate(id) : undefined
@@ -122,18 +122,18 @@ export function TemplateDetailPage() {
   const hasApplicableRules = compliance.applicableRules.length > 0
 
   // Note: previously derived a "How it's sent" label from variable.source. Removed because
-  // v0 doesn't capture source in the editor — the field always defaulted to "Manual / scheduled"
+  // v0 doesn't capture source in the editor - the field always defaulted to "Manual / scheduled"
   // for new templates, which was misleading.
 
   const [previewMode, setPreviewMode] = useState<'samples' | 'html'>('samples')
   const [copied, setCopied] = useState(false)
   // Session-scoped sample values for testing how the template renders with custom data.
-  // Not persisted — lost on page reload. Defaults remain the persistent fallback.
+  // Not persisted - lost on page reload. Defaults remain the persistent fallback.
   const [sampleValues, setSampleValues] = useState<Record<string, string>>({})
   // Right-column card expansion state. Smart defaults:
-  //   Variables — collapsed (most users don't test sample data on first visit)
-  //   Partials  — auto-expand when there's a compliance issue, otherwise collapsed
-  //   Details   — collapsed (low-signal metadata)
+  //   Variables - collapsed (most users don't test sample data on first visit)
+  //   Partials  - auto-expand when there's a compliance issue, otherwise collapsed
+  //   Details   - collapsed (low-signal metadata)
   // Per designer's Screenshot_6.57.33: Variables open by default to show sample inputs.
   const [varsOpen, setVarsOpen] = useState(true)
   const [partialsOpen, setPartialsOpen] = useState(false)
@@ -141,7 +141,7 @@ export function TemplateDetailPage() {
   const [detailsOpen, setDetailsOpen] = useState(true)
 
   // Auto-expand the Partials card when there's a compliance issue or an inactive embedded
-  // partial — users need to see what's wrong without an extra click.
+  // partial - users need to see what's wrong without an extra click.
   const hasInactiveEmbeddedPartial = template.requiredPartialIds.some((pid) => {
     const p = PARTIALS.find((x) => x.id === pid)
     return p?.lifecycle === 'Inactive'
@@ -163,7 +163,7 @@ export function TemplateDetailPage() {
   const compiledSubject = renderContent(template.subject)
   const compiledPreHeader = template.preHeader ? renderContent(template.preHeader) : undefined
 
-  // Raw HTML — template source with {{varName}} tokens intact.
+  // Raw HTML - template source with {{varName}} tokens intact.
   // Used in the HTML source view so users can copy it for migration.
   const rawComposedHtml = template.sections
     ? renderSection(template.sections.header, (s) => s)
@@ -234,7 +234,7 @@ export function TemplateDetailPage() {
 
   return (
     <div className="space-y-6">
-      {/* Sticky page-header region — breadcrumbs + identity strip stay pinned;
+      {/* Sticky page-header region - breadcrumbs + identity strip stay pinned;
           the rest of the page scrolls under them. */}
       <div className="sticky top-0 bg-white z-10 pt-6 pb-4 space-y-3 border-b border-gray-100">
         <Breadcrumbs items={[
@@ -286,7 +286,7 @@ export function TemplateDetailPage() {
                 blockers.push(`Uses ${inactiveUsed.length} inactive ${inactiveUsed.length === 1 ? 'partial' : 'partials'}`)
               }
               const canActivate = blockers.length === 0
-              // Custom hover tooltip — native `title` doesn't reliably fire on disabled buttons.
+              // Custom hover tooltip - native `title` doesn't reliably fire on disabled buttons.
               // Wrapper div catches hover; tooltip is positioned below the button.
               return (
                 <div className="relative group">
@@ -322,7 +322,7 @@ export function TemplateDetailPage() {
         </div>
       </div>
 
-      {/* Post-creation callout — shown once when user lands here after saving a new template.
+      {/* Post-creation callout - shown once when user lands here after saving a new template.
           Explains that Inactive is expected and points to the Activate button. Dismissed locally. */}
       {showCreatedCallout && (
         <div className="flex items-start gap-3 bg-blue-50 border border-blue-200 rounded-lg px-4 py-3 text-sm text-blue-900">
@@ -413,7 +413,7 @@ export function TemplateDetailPage() {
 
       {/* Two-column body */}
       <div className="flex gap-6 items-start">
-        {/* Left 60% — email preview */}
+        {/* Left 60% - email preview */}
         <div className="flex-[3] min-w-0 space-y-3">
           <div className="flex items-center justify-between">
             <h2 className="text-lg font-semibold text-gray-900">Preview</h2>
@@ -433,7 +433,7 @@ export function TemplateDetailPage() {
                   className={`px-3 py-1 rounded-full font-semibold uppercase tracking-wide transition-colors ${
                     previewMode === 'html' ? 'bg-white text-gray-900 shadow-sm' : 'text-gray-500 hover:text-gray-700'
                   }`}
-                  title="View raw HTML source — copy to migrate to another system"
+                  title="View raw HTML source to copy into another system"
                 >&lt;/&gt; HTML</button>
               </div>
             )}
@@ -499,7 +499,7 @@ export function TemplateDetailPage() {
                 </button>
               </div>
               <pre className="text-xs text-gray-700 font-mono p-4 overflow-auto" style={{ height: '528px', whiteSpace: 'pre-wrap', wordBreak: 'break-all' }}>
-                {rawComposedHtml || '<— no content blocks yet —>'}
+                {rawComposedHtml || '<!-- no content blocks yet -->'}
               </pre>
             </div>
           )}
@@ -516,9 +516,9 @@ export function TemplateDetailPage() {
           )}
         </div>
 
-        {/* Right 40% — Details → Variables → Partials per `Screenshot_6.57.33`. */}
+        {/* Right 40% - Details → Variables → Partials per `Screenshot_6.57.33`. */}
         <div className="flex-[2] min-w-0 space-y-4">
-          {/* Details — first in the stack, default open. */}
+          {/* Details - first in the stack, default open. */}
           <CollapsibleCard
             open={detailsOpen}
             onToggle={() => setDetailsOpen((v) => !v)}
@@ -568,7 +568,7 @@ export function TemplateDetailPage() {
             </dl>
           </CollapsibleCard>
 
-          {/* Variables — second in the stack, default open. Sample value inputs. */}
+          {/* Variables - second in the stack, default open. Sample value inputs. */}
           {template.variables.length > 0 && (
             <CollapsibleCard
               open={varsOpen}
@@ -604,7 +604,7 @@ export function TemplateDetailPage() {
             </CollapsibleCard>
           )}
 
-          {/* Partials — composition contract + compliance status (single source of truth)
+          {/* Partials - composition contract + compliance status (single source of truth)
               Auto-expands when there's something to fix. */}
           <CollapsibleCard
             id="compliance"
@@ -648,7 +648,7 @@ export function TemplateDetailPage() {
                       <div className="flex items-center gap-1.5 shrink-0">
                         <span className="text-xs text-gray-500">{p.section}</span>
                         {isPartialInactive && (
-                          <span className="text-xs px-1.5 py-0.5 rounded bg-red-50 text-red-600">Inactive — blocks activation</span>
+                          <span className="text-xs px-1.5 py-0.5 rounded bg-red-50 text-red-600">Inactive, blocks activation</span>
                         )}
                       </div>
                     </div>
@@ -664,7 +664,7 @@ export function TemplateDetailPage() {
                     <path strokeLinecap="round" strokeLinejoin="round" d="M12 9v3.75m-9.303 3.376c-.866 1.5.217 3.374 1.948 3.374h14.71c1.73 0 2.813-1.874 1.948-3.374L13.949 3.378c-.866-1.5-3.032-1.5-3.898 0L2.697 16.126zM12 15.75h.007v.008H12v-.008z" />
                   </svg>
                   <h3 className="text-sm font-medium text-amber-900">
-                    Missing — required by current rules
+                    Missing, required by current rules
                   </h3>
                 </div>
                 <div className="space-y-1.5">
@@ -716,7 +716,7 @@ export function TemplateDetailPage() {
         </div>
       </div>
 
-      {/* Audit timeline — collapsed by default */}
+      {/* Audit timeline - collapsed by default */}
       {auditEvents.length > 0 && (
         <details className="group">
           <summary className="cursor-pointer text-sm font-medium text-gray-600 hover:text-gray-900 inline-flex items-center gap-1.5 select-none">

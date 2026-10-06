@@ -25,7 +25,7 @@ export function DocActionMap({ data, markers }: { data: DocImageData; markers: A
               {m.n}
             </span>
             <span>
-              <b className="font-semibold">{m.label}</b> — <span className="text-gray-500">{renderInline(m.desc)}</span>
+              <b className="font-semibold">{m.label}:</b> <span className="text-gray-500">{renderInline(m.desc)}</span>
               {m.tag && (
                 <span className="ml-1.5 align-middle text-[9px] font-bold tracking-wide uppercase text-primary-strong bg-primary-tint rounded px-1.5 py-0.5">
                   {m.tag}

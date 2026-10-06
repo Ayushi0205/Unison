@@ -60,7 +60,7 @@ export function RequiredPartialsPage() {
 
   // Team filter has two distinct modes:
   // - "ALL (global)": show only rules where r.team === 'ALL'
-  // - A specific team (e.g., "Sourcing"): show the effective view — rules a Sourcing template
+  // - A specific team (e.g., "Sourcing"): show the effective view - rules a Sourcing template
   //   would actually receive at creation = ALL rules + Sourcing-specific rules,
   //   narrowed to template types Sourcing actually uses.
   const visibleRules = useMemo(() => {
@@ -400,7 +400,7 @@ function PageHeader({
 const SECTION_ORDER: Record<PartialSection, number> = { Header: 0, Body: 1, Footer: 2 }
 
 // DF2 designer feedback: Section column uses the Tags component's light-gray
-// (default) variant — all three sections share the same neutral pill.
+// (default) variant - all three sections share the same neutral pill.
 function SectionPill({ section }: { section: PartialSection }) {
   return (
     <span className="inline-flex items-center text-[10px] uppercase tracking-wider font-semibold px-2.5 py-0.5 rounded-full bg-gray-100 text-gray-700">
@@ -410,7 +410,7 @@ function SectionPill({ section }: { section: PartialSection }) {
 }
 
 // DF2 designer feedback: Team Scope column uses the Tags component's white
-// variant — white fill with a thin gray border.
+// variant - white fill with a thin gray border.
 function TeamChip({ team }: { team: RuleTeam }) {
   const label = team === 'ALL' ? 'All teams' : team
   return (
@@ -550,7 +550,7 @@ function TemplateTypeRow({
         </tbody>
       </table>
 
-      {/* Remove-rule confirmation modal — per designer feedback item 29:
+      {/* Remove-rule confirmation modal - per designer feedback item 29:
           "When removing a partial, use a modal to prompt user." */}
       {confirmingRule && (
         <ConfirmModal
@@ -582,10 +582,10 @@ function TemplateTypeRow({
 }
 
 // Three-action overflow menu per designer feedback item 28:
-// - "Edit rule" — opens the rule editor (was the previous "Edit")
-// - "Edit partial" — navigates to the partial editor (NEW; previously the partial-edit
+// - "Edit rule" - opens the rule editor (was the previous "Edit")
+// - "Edit partial" - navigates to the partial editor (NEW; previously the partial-edit
 //   action was incorrectly mapped to rule edit)
-// - "Remove" — removes the rule (triggers the destructive ConfirmModal)
+// - "Remove" - removes the rule (triggers the destructive ConfirmModal)
 function RowActions({
   onEditRule, onEditPartial, onRemove,
 }: {
@@ -673,7 +673,7 @@ function RuleFormPanel({
   const canSubmit = !!form.team && !!form.templateType && form.partialIds.length > 0
   const partial = primaryPartialId ? PARTIALS.find((p) => p.id === primaryPartialId) : null
 
-  // Eligible partials: any active partial. Partials are universal — the rule layer
+  // Eligible partials: any active partial. Partials are universal - the rule layer
   // determines which team's templates use which partial.
   const eligiblePartials = useMemo(() => {
     return PARTIALS.filter((p) => p.lifecycle === 'Active')
@@ -755,10 +755,10 @@ function RuleFormPanel({
   }
 
   return (
-    // DF2: Slide-in side panel (drawer) — replaces the inline expanding block
+    // DF2: Slide-in side panel (drawer) - replaces the inline expanding block
     // so the rules list never scrolls out of view when adding/editing a rule.
     <div className="fixed inset-0 z-40 flex justify-end" role="dialog" aria-modal="true">
-      {/* Backdrop — click to dismiss */}
+      {/* Backdrop - click to dismiss */}
       <div className="absolute inset-0 bg-gray-900/20" onClick={onCancel} />
       <aside className="relative w-full max-w-[480px] h-full bg-white shadow-xl border-l border-gray-200 flex flex-col">
       <div className="px-6 py-4 flex items-start justify-between border-b border-gray-100 shrink-0">
@@ -820,7 +820,7 @@ function RuleFormPanel({
               Required {editing ? 'partial' : 'partial(s)'}
             </label>
             {editing ? (
-              // Edit mode — single rule = single partial. Use the existing dropdown picker.
+              // Edit mode - single rule = single partial. Use the existing dropdown picker.
               <PartialPicker
                 partials={eligiblePartials}
                 value={form.partialIds[0] ?? ''}
@@ -829,7 +829,7 @@ function RuleFormPanel({
                 onChange={(id) => setForm({ ...form, partialIds: [id] })}
               />
             ) : (
-              // Add mode — multi-select per designer feedback item 27.
+              // Add mode - multi-select per designer feedback item 27.
               // User picks one or more partials; the form creates one rule per selection.
               <MultiPartialPicker
                 partials={eligiblePartials}
@@ -1151,7 +1151,7 @@ function MultiPartialPicker({
           </div>
           {selected.length > 0 && (
             <div className="border-t border-gray-100 px-3 py-2 text-xs text-gray-500 bg-gray-50">
-              {selected.length} {selected.length === 1 ? 'partial' : 'partials'} selected — one rule will be created per selection
+              {selected.length} {selected.length === 1 ? 'partial' : 'partials'} selected. One rule will be created per selection.
             </div>
           )}
         </div>

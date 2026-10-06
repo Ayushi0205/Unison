@@ -9,7 +9,7 @@ export const GOVERNANCE: HelpArticle[] = [
     blocks: [
       {
         kind: 'intro',
-        text: 'Some templates must include certain partials before they can send — a legal footer, an unsubscribe line. This is how Unison makes sure those blocks are always there, not just available.',
+        text: 'Some templates must include certain partials before they can send, such as a legal footer or an unsubscribe line. This is how Unison makes sure those blocks are always there, not just available.',
       },
       {
         kind: 'paragraph',
@@ -43,14 +43,14 @@ export const GOVERNANCE: HelpArticle[] = [
     blocks: [
       {
         kind: 'intro',
-        text: 'A rule makes a partial required for a template type — for one team, or for every team. When someone creates a matching template, the required partial is expected on it.',
+        text: 'A rule makes a partial required for a template type, for one team or for every team. When someone creates a matching template, the required partial is expected on it.',
       },
       { kind: 'heading', text: 'Add a rule' },
       {
         kind: 'steps',
         items: [
           { text: 'Go to **Admin → Required partials** and select **Add rule**.' },
-          { text: 'In the side panel, choose the **Team** — a single team, or All teams for a global rule.' },
+          { text: 'In the side panel, choose the **Team**: a single team, or All teams for a global rule.' },
           { text: 'Choose the **Template type** the rule applies to.' },
           {
             text: 'Select one or more **Required partials**. You can pick several at once.',

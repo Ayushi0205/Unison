@@ -2,7 +2,7 @@ import type { RequiredPartialRule } from './types'
 import { loadCollection, replaceAll } from './demo-store'
 
 const SEED_RULES: RequiredPartialRule[] = [
-  // Global rules (team: 'ALL') — apply to every team
+  // Global rules (team: 'ALL') - apply to every team
   { id: 'rule-1', team: 'ALL', templateType: 'Onboarding', partialId: 'partial-legal-footer' },
   { id: 'rule-2', team: 'ALL', templateType: 'Onboarding', partialId: 'partial-unsubscribe' },
   { id: 'rule-3', team: 'ALL', templateType: 'Onboarding', partialId: 'partial-brand-header' },

@@ -1,7 +1,7 @@
 import { Fragment, useEffect, useLayoutEffect, useRef, useState } from 'react'
 
 /**
- * Active-filter item passed in. `key` must be unique per chip — group identity
+ * Active-filter item passed in. `key` must be unique per chip - group identity
  * for multi-select filters comes from `label` (e.g. all "Tag" rows are grouped).
  */
 export type AppliedFilterItem = {
@@ -17,7 +17,7 @@ type Props = {
 }
 
 /**
- * Applied filters bar — designer DF2 spec (screenshot references):
+ * Applied filters bar - designer DF2 spec (screenshot references):
  *
  *   LABEL (Value ×) | LABEL (Value ×) | TAGS (A ×) (B ×) (C ×)
  *
@@ -47,7 +47,7 @@ export function AppliedFiltersBar({ filters, onClearAll }: Props) {
   const [collapsed, setCollapsed] = useState(false)
   const [lineHeight, setLineHeight] = useState<number>(0)
 
-  // Measure after layout — if chips exceed one row height, show the collapse arrow.
+  // Measure after layout - if chips exceed one row height, show the collapse arrow.
   useLayoutEffect(() => {
     const el = chipsRef.current
     if (!el) return
@@ -114,14 +114,14 @@ export function AppliedFiltersBar({ filters, onClearAll }: Props) {
       >
         {grouped.map((group, gi) => (
           <Fragment key={group.label}>
-            {/* Label + first pill — atomic so the label never wraps alone. */}
+            {/* Label + first pill - atomic so the label never wraps alone. */}
             <span className="inline-flex items-center gap-2">
               <span className="text-[11px] font-medium uppercase tracking-wide text-gray-500">
                 {group.label}
               </span>
               <ChipPill it={group.items[0]} />
             </span>
-            {/* Remaining pills in the group — each its own flex-wrap sibling so
+            {/* Remaining pills in the group - each its own flex-wrap sibling so
                 they can break across lines individually. */}
             {group.items.slice(1).map((it) => (
               <ChipPill key={it.key} it={it} />

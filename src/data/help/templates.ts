@@ -22,7 +22,7 @@ export const TEMPLATES: HelpArticle[] = [
       },
       {
         kind: 'paragraph',
-        text: 'Select a column heading — **Name**, **Team**, or **Updated** — to sort. Use the controls at the bottom to move between pages or change how many rows show.',
+        text: 'Select a column heading (**Name**, **Team**, or **Updated**) to sort. Use the controls at the bottom to move between pages or change how many rows show.',
       },
       {
         kind: 'related',

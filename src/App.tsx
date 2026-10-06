@@ -12,7 +12,6 @@ import { RequiredPartialsPage } from './pages/RequiredPartialsPage'
 import { PartialEditorPage } from './pages/PartialEditorPage'
 import { ProgramsPage } from './pages/ProgramsPage'
 import { TemplateEditorPage } from './pages/TemplateEditorPage'
-import { UnderConstruction } from './components/shared/UnderConstruction'
 import { LoginPage } from './pages/LoginPage'
 import { HelpLayout } from './pages/help/HelpLayout'
 import { HelpArticlePage } from './pages/help/HelpArticlePage'
@@ -34,7 +33,6 @@ export default function App() {
           <Route path="partials" element={<PartialsPage />} />
           <Route path="partials/:id" element={<PartialDetailPage />} />
           {/* Placeholder routes for Phase 9 "Under construction" state. */}
-          <Route path="whats-new" element={<UnderConstruction />} />
           <Route path="help" element={<HelpLayout />}>
             <Route index element={<Navigate to="/help/welcome" replace />} />
             <Route path=":articleId" element={<HelpArticlePage />} />

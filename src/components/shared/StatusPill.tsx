@@ -1,7 +1,7 @@
 import type { Lifecycle } from '../../data/taxonomy'
 
 /**
- * Status badge — matches designer's May 28 review palette:
+ * Status badge - matches designer's May 28 review palette:
  * - ACTIVE: pale green fill + deep forest-green text
  * - DRAFT: white fill + medium gray border + dark gray text
  * - INACTIVE: light gray fill + medium gray text

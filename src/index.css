@@ -3,7 +3,7 @@
 @import "@fontsource-variable/geist-mono";
 
 @theme {
-  /* Unison brand colors — palette A (teal and amber) */
+  /* Unison brand colors - palette A (teal and amber) */
   --color-primary: #0f6e56;
   --color-primary-hover: #085041;
   --color-primary-strong: #085041;
@@ -73,7 +73,7 @@ body {
   margin: 0.15em 0;
 }
 
-/* Anchors inside the editor need their visual treatment back — Tailwind v4's
+/* Anchors inside the editor need their visual treatment back - Tailwind v4's
    preflight resets `a` to inherit color and no underline, which makes inserted
    links look identical to plain text and confuses users about whether the
    link was actually inserted. Brand green + underline matches the Preview

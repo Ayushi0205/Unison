@@ -9,7 +9,7 @@ export interface RuleComplianceResult {
 }
 
 export function evaluateTemplateCompliance(template: Template): RuleComplianceResult {
-  // "Others" is a catch-all template type — by policy, no governance rules apply to it.
+  // "Others" is a catch-all template type - by policy, no governance rules apply to it.
   if (template.templateType === 'Others') {
     return { applicableRules: [], missingPartialIds: [], missingPartialNames: [] }
   }

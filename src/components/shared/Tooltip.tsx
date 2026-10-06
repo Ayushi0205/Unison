@@ -37,7 +37,7 @@ export function Tooltip({
     return 'left-1/2 -translate-x-1/2'
   })()
 
-  // Per designer feedback: tooltip shape matches a clean rounded rectangle —
+  // Per designer feedback: tooltip shape matches a clean rounded rectangle -
   // no arrow, slightly larger padding, slightly larger text. Same shape for
   // every placement so the visual is consistent across the app.
   return (

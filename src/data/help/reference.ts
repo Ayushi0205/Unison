@@ -12,7 +12,7 @@ export const REFERENCE: HelpArticle[] = [
         kind: 'table',
         headers: ['Term', 'What it means'],
         rows: [
-          ['Template', 'A complete email a team sends — subject, body, and the partials it includes.'],
+          ['Template', 'A complete email a team sends: subject, body, and the partials it includes.'],
           ['Partial', 'A reusable block (header, footer, unsubscribe line) used across many templates.'],
           ['Required partial', 'A partial that a rule says must be present on a certain type of template.'],
           ['Compliance', 'Whether a template includes all the partials its rules require.'],

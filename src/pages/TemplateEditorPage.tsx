@@ -53,7 +53,7 @@ function substituteVariables(text: string, variables: Variable[]): string {
 
 function buildCTAHTML(text: string, url: string, color: 'green' | 'purple'): string {
   const palette = color === 'purple' ? { bg: '#4B286D', fg: '#FFFFFF' } : { bg: '#007F4A', fg: '#FFFFFF' }
-  // No hardcoded text-align on the wrapper — the toolbar's Align button
+  // No hardcoded text-align on the wrapper - the toolbar's Align button
   // (which sets text-align on the closest block to the selection) needs to
   // be able to control the button's left/center/right placement.
   return `<div style="padding:16px 0"><a href="${url}" style="display:inline-block;background:${palette.bg};color:${palette.fg};padding:12px 32px;border-radius:6px;text-decoration:none;font-weight:600">${text}</a></div>`
@@ -117,12 +117,12 @@ export function TemplateEditorPage() {
   const [activeFormats, setActiveFormats] = useState({ bold: false, italic: false, underline: false, block: '' })
   const [expandedPartial, setExpandedPartial] = useState<string | null>(null)
   // Per-block HTML/source view mode. Default for any block is 'rich' (contenteditable).
-  // In 'source' mode, the block renders a textarea with the raw HTML — useful for migrating
+  // In 'source' mode, the block renders a textarea with the raw HTML - useful for migrating
   // templates from other systems by pasting in HTML.
   const [blockViewModes, setBlockViewModes] = useState<Record<string, 'rich' | 'source'>>({})
-  // Inline partial picker — only used now for picking via inserter popovers (no modal state needed)
+  // Inline partial picker - only used now for picking via inserter popovers (no modal state needed)
   const [sampleValues, setSampleValues] = useState<Record<string, string>>({})
-  // Default values — used at send time if the pipeline doesn't supply a value for a variable.
+  // Default values - used at send time if the pipeline doesn't supply a value for a variable.
   // Initialized from the source template (if editing) and persisted on save.
   const [defaultValues, setDefaultValues] = useState<Record<string, string>>(() => {
     const map: Record<string, string> = {}
@@ -149,7 +149,7 @@ export function TemplateEditorPage() {
   }, [selectedTeam])
 
   // Required partial IDs from governance rules (team+ALL × type).
-  // "Others" is a catch-all type — by policy, no governance rules apply to it.
+  // "Others" is a catch-all type - by policy, no governance rules apply to it.
   const requiredRulePartialIds = useMemo<string[]>(() => {
     if (!selectedTeam || !selectedType) return []
     if (selectedType === 'Others') return []
@@ -351,7 +351,7 @@ export function TemplateEditorPage() {
     }))
   }, [])
 
-  // Direct HTML setter — used by the source-mode textarea, which writes raw HTML
+  // Direct HTML setter - used by the source-mode textarea, which writes raw HTML
   // (the contenteditable-based syncBlockFromEditor would read from a DOM that doesn't exist).
   const setBlockHtml = useCallback((blockId: string, html: string) => {
     setSections((prev) => ({
@@ -424,10 +424,10 @@ export function TemplateEditorPage() {
     setSections((prev) => ({ ...prev, [section]: prev[section].filter((b) => b.id !== blockId) }))
   }
 
-  // (Previously had a `moveBlock` helper for ↑/↓ keyboard reorder — removed; drag-and-drop
+  // (Previously had a `moveBlock` helper for ↑/↓ keyboard reorder - removed; drag-and-drop
   // via @dnd-kit's `handleSectionDragEnd` below covers all reorder cases.)
 
-  // Drag handler — reorders blocks within a single section based on @dnd-kit drag end
+  // Drag handler - reorders blocks within a single section based on @dnd-kit drag end
   const handleSectionDragEnd = (section: SectionKey) => (event: DragEndEvent) => {
     const { active, over } = event
     if (!over || active.id === over.id) return
@@ -440,7 +440,7 @@ export function TemplateEditorPage() {
     })
   }
 
-  // dnd-kit sensors — small activation distance so clicks on the drag handle still work as clicks
+  // dnd-kit sensors - small activation distance so clicks on the drag handle still work as clicks
   const dndSensors = useSensors(useSensor(PointerSensor, { activationConstraint: { distance: 5 } }))
 
   // ── Partial picker (inline popovers) ──────────────────────────────────────
@@ -472,7 +472,7 @@ export function TemplateEditorPage() {
       name: nameTrimmed,
       subject: subjectTrimmed,
       preHeader: preHeader.trim() || undefined,
-      body: concatenatedBody, // legacy field — concat of all body content blocks
+      body: concatenatedBody, // legacy field - concat of all body content blocks
       sections,
       contentType: 'html',
       templateType: selectedType as TemplateType,
@@ -568,7 +568,7 @@ export function TemplateEditorPage() {
             ]
       } />
 
-      {/* Editable page header — matches `Screenshot_7.12.00`:
+      {/* Editable page header - matches `Screenshot_7.12.00`:
           editable title, Cancel (secondary) + Save (primary) buttons, overflow "…" menu
           (edit-mode only), bottom divider line under the entire row. */}
       <div className="flex items-start justify-between gap-6 mt-4 pb-4 border-b border-gray-200">
@@ -583,7 +583,7 @@ export function TemplateEditorPage() {
             className="px-4 py-1.5 text-sm font-medium text-white bg-primary rounded-md hover:bg-primary-hover disabled:opacity-40 disabled:cursor-not-allowed">
             {isEdit ? 'Save changes' : 'Save template'}
           </button>
-          {/* Overflow menu — visible only when editing an existing template.
+          {/* Overflow menu - visible only when editing an existing template.
               "Delete" is a placeholder for now; will wire to a confirm modal in Phase 8. */}
           {isEdit && (
             <OverflowMenu
@@ -610,7 +610,7 @@ export function TemplateEditorPage() {
         </div>
       )}
 
-      {/* Details accordion — per designer feedback item 14:
+      {/* Details accordion - per designer feedback item 14:
           "Details can be placed first on the right side, it's collapsible anyway.
            So if in Edit mode or New Partial, user could edit the infos like Team,
            Section, Template Type, Tags."
@@ -678,7 +678,7 @@ export function TemplateEditorPage() {
         />
       </div>
 
-      {/* Preview text (also known as pre-header in email standards — stored as Template.preHeader) */}
+      {/* Preview text (also known as pre-header in email standards - stored as Template.preHeader) */}
       <div className="mt-2 mb-1">
         <div className="flex items-center justify-between mb-1.5">
           <label className="text-[10px] uppercase tracking-wider font-semibold text-gray-500">
@@ -714,7 +714,7 @@ export function TemplateEditorPage() {
         )}
       </div>
 
-      {/* Sticky toolbar — acts on focused content block */}
+      {/* Sticky toolbar - acts on focused content block */}
       <EditorToolbar
         focused={!!focusedBlockId}
         exec={exec} openPopover={openPopover}
@@ -763,7 +763,7 @@ export function TemplateEditorPage() {
             </div>
           )}
 
-          {/* Variables — collapsible section showing all variables in this template */}
+          {/* Variables - collapsible section showing all variables in this template */}
           <VariablesSection
             varRefs={varRefs}
             varSource={varSource}
@@ -773,7 +773,7 @@ export function TemplateEditorPage() {
             onToggle={() => setVariablesExpanded((v) => !v)}
           />
 
-          {/* Activation readiness — collapsible status row */}
+          {/* Activation readiness - collapsible status row */}
           <ReadinessRow
             allReady={allReady} failedCount={failedCount}
             checks={readinessChecks}
@@ -798,7 +798,7 @@ export function TemplateEditorPage() {
         )}
       </div>
 
-      {/* Preview modal — includes a collapsible "Sample data" panel for filling preview values */}
+      {/* Preview modal - includes a collapsible "Sample data" panel for filling preview values */}
       {showPreview && (
         <PreviewModal
           html={previewHtml}
@@ -906,7 +906,7 @@ function SectionView({
       </div>
 
       <div className="space-y-0">
-        {/* Top inserter — only when this section can still accept blocks */}
+        {/* Top inserter - only when this section can still accept blocks */}
         {allowMoreBlocks && (
           <BlockInserter
             sectionKey={sectionKey}
@@ -933,7 +933,7 @@ function SectionView({
               viewMode={blockViewModes[block.id] ?? 'rich'}
               onChangeHtml={(html) => onChangeBlockHtml(block.id, html)}
             />
-            {/* Inserter between blocks — only for body (header/footer cap at 1 block) */}
+            {/* Inserter between blocks - only for body (header/footer cap at 1 block) */}
             {!isStructural && (
               <BlockInserter
                 sectionKey={sectionKey}
@@ -951,8 +951,8 @@ function SectionView({
 }
 
 function sectionEmptyHint(sectionKey: SectionKey): string {
-  if (sectionKey === 'header') return 'Empty — add one content block or one partial.'
-  if (sectionKey === 'footer') return 'Empty — add one content block or one partial.'
+  if (sectionKey === 'header') return 'Empty. Add one content block or one partial.'
+  if (sectionKey === 'footer') return 'Empty. Add one content block or one partial.'
   return 'Add a content block to start writing.'
 }
 
@@ -992,7 +992,7 @@ function SortableBlock({
 
   return (
     <div ref={setNodeRef} style={style} className="relative group/block flex items-stretch gap-1">
-      {/* Drag handle column — only when reordering is meaningful */}
+      {/* Drag handle column - only when reordering is meaningful */}
       {draggable ? (
         <button
           {...attributes} {...listeners}
@@ -1131,7 +1131,7 @@ function ContentBlockView({
 
   useEffect(() => {
     // Only register the contenteditable element when in rich mode.
-    // In source mode, we don't track this ref — formatting commands are disabled anyway.
+    // In source mode, we don't track this ref - formatting commands are disabled anyway.
     if (viewMode === 'rich' && ref.current) editorRefs.current.set(blockId, ref.current)
     return () => { editorRefs.current.delete(blockId) }
   }, [blockId, editorRefs, viewMode])
@@ -1242,7 +1242,7 @@ function PartialBlockView({
   )
 }
 
-// ─── Readiness row — collapsible status at the bottom ────────────────────────
+// ─── Readiness row - collapsible status at the bottom ────────────────────────
 
 function ReadinessRow({
   allReady, failedCount, checks, expanded, onToggle,
@@ -1308,10 +1308,10 @@ function ReadinessRow({
   )
 }
 
-// (VariablesPopover removed — Variables moved out of the action bar into a dedicated
+// (VariablesPopover removed - Variables moved out of the action bar into a dedicated
 //  VariablesSection below the editor content. See VariablesSection below.)
 
-// ─── Preview sidebar — side-by-side rendered email with sample data accordion ──
+// ─── Preview sidebar - side-by-side rendered email with sample data accordion ──
 // Open by default; collapse for focus mode; fullscreen button opens the existing PreviewModal.
 
 function PreviewSidebar({
@@ -1358,7 +1358,7 @@ function PreviewSidebar({
         </div>
       </div>
 
-      {/* Sample data accordion — only when the template has variables */}
+      {/* Sample data accordion - only when the template has variables */}
       {variables.length > 0 && (
         <div className="border-b border-gray-200 shrink-0">
           <button onClick={() => setSampleOpen((v) => !v)}
@@ -1403,7 +1403,7 @@ function PreviewSidebar({
   )
 }
 
-// ─── Collapsed preview rail — thin strip with re-expand button ──────────────
+// ─── Collapsed preview rail - thin strip with re-expand button ──────────────
 
 function PreviewRail({ onExpand }: { onExpand: () => void }) {
   return (
@@ -1419,7 +1419,7 @@ function PreviewRail({ onExpand }: { onExpand: () => void }) {
   )
 }
 
-// ─── Variables section — collapsible list of all variables in the template ──
+// ─── Variables section - collapsible list of all variables in the template ──
 // Sits below the editor sections (Header/Body/Footer), above the readiness row.
 // Replaces the Variables popover that used to live in the action bar.
 
@@ -1454,7 +1454,7 @@ function VariablesSection({
         <div className="px-3 pb-3 border-t border-gray-100">
           {varRefs.length === 0 ? (
             <p className="text-xs text-gray-500 pt-2">
-              No variables yet. Type <code className="text-amber-700">{`{{varName}}`}</code> in the subject, preview text, or any content block — or use the <strong>{`{{x}}`}</strong> picker.
+              No variables yet. Type <code className="text-amber-700">{`{{varName}}`}</code> in the subject, preview text, or any content block, or use the <strong>{`{{x}}`}</strong> picker.
             </p>
           ) : (
             <>
@@ -1490,7 +1490,7 @@ function VariablesSection({
   )
 }
 
-// ─── Preview modal — renders assembled email + collapsible Sample data panel ─
+// ─── Preview modal - renders assembled email + collapsible Sample data panel ─
 
 function PreviewModal({
   html, onClose, variables, sampleValues, defaultValues, onChangeSample,
@@ -1519,7 +1519,7 @@ function PreviewModal({
           </button>
         </div>
 
-        {/* Sample data panel — collapsible. Only shown when the template has variables. */}
+        {/* Sample data panel - collapsible. Only shown when the template has variables. */}
         {variables.length > 0 && (
           <div className="border-b border-gray-200 shrink-0">
             <button onClick={() => setExpanded((v) => !v)}
@@ -1573,7 +1573,7 @@ function MetaField({ label, children }: { label: string; children: React.ReactNo
   )
 }
 
-// Editor "Details" accordion — collapsible card wrapping the Team / Type / Project
+// Editor "Details" accordion - collapsible card wrapping the Team / Type / Project
 // fields per designer feedback item 14. Open by default so users immediately see
 // the fields they likely need to set.
 function EditorDetailsAccordion({ children }: { children: React.ReactNode }) {
@@ -1889,7 +1889,7 @@ function EditorToolbar({
   /** Toggle source/rich view on the focused content block */
   onToggleSource: () => void
 }) {
-  // In source mode, formatting commands don't apply to a contenteditable surface — disable them
+  // In source mode, formatting commands don't apply to a contenteditable surface - disable them
   // and keep only Undo/Redo + Source + Variable active (Variable insertion into the textarea).
   const formattingDisabled = !focused || sourceMode
   return (
@@ -1902,7 +1902,7 @@ function EditorToolbar({
         </TBtn>
       </ToolbarGroup>
       <Divider />
-      {/* Heading dropdown (T▾) — per designer's `texteditor.jpg` */}
+      {/* Heading dropdown (T▾) - per designer's `texteditor.jpg` */}
       <ToolbarGroup>
         <HeadingDropdown exec={exec} disabled={formattingDisabled} activeBlock={active.block} saveSelection={saveSelection} restoreSelection={restoreSelection} />
       </ToolbarGroup>
@@ -2000,7 +2000,7 @@ function HeadingDropdown({ exec, disabled, activeBlock, saveSelection, restoreSe
       onMouseDown={(e) => { e.stopPropagation(); saveSelection() }} onFocus={saveSelection}
       onChange={(e) => { const v = e.target.value; if (v) { restoreSelection(); exec('formatBlock', `<${v}>`) }; e.target.value = '' }}
       className="h-7 text-xs text-gray-700 bg-transparent border-0 px-1 rounded hover:bg-gray-100 disabled:opacity-30 disabled:cursor-not-allowed cursor-pointer focus:outline-none"
-      title={`Block format — current: ${currentLabel}`} value="">
+      title={`Block format (current: ${currentLabel})`} value="">
       <option value="" disabled>{currentLabel} ▾</option>
       <option value="p">Paragraph</option>
       <option value="h1">Heading 1</option>

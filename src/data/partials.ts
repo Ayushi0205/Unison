@@ -182,7 +182,7 @@ const RAW_PARTIALS: Omit<Partial, 'usedInCount'>[] = [
     name: 'Beta Feedback Banner',
     section: 'Body',
     authoringTeam: 'Platform',
-    body: '<div style="background:#eef2ff;border:1px solid #c7d2fe;border-radius:6px;padding:12px;margin:12px 0"><p style="margin:0;font-size:13px;color:#3730a3"><strong>Trying something new?</strong> Share your feedback in 30 seconds — <a href="{{feedback_url}}" style="color:#4338ca;text-decoration:underline">take the survey</a>.</p></div>',
+    body: '<div style="background:#eef2ff;border:1px solid #c7d2fe;border-radius:6px;padding:12px;margin:12px 0"><p style="margin:0;font-size:13px;color:#3730a3"><strong>Trying something new?</strong> Share your feedback in 30 seconds: <a href="{{feedback_url}}" style="color:#4338ca;text-decoration:underline">take the survey</a>.</p></div>',
     lifecycle: 'Active',
     owner: 'platform.team@meridianworks.example',
     version: 1,
@@ -192,7 +192,7 @@ const RAW_PARTIALS: Omit<Partial, 'usedInCount'>[] = [
   },
 ]
 
-// `usedInCount` is the blast-radius signal — only ACTIVE templates count.
+// `usedInCount` is the blast-radius signal - only ACTIVE templates count.
 // Drafts haven't shipped (no live impact yet); Inactive templates aren't sending.
 // Drafts are surfaced separately on the Partial Detail page as future blast radius;
 // Inactive templates appear behind a toggle for historical audit only.

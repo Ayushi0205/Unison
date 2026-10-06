@@ -3,7 +3,7 @@
  * fixtures and saved to localStorage on every write, so changes survive reloads
  * and every page reads the same data. resetDemo() restores the seed.
  */
-const PREFIX = 'unison.demo.v1.'
+const PREFIX = 'unison.demo.v2.'
 
 export function loadCollection<T>(name: string, seed: T[]): T[] {
   try {

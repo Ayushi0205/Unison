@@ -9,7 +9,7 @@ export const PARTIALS: HelpArticle[] = [
     blocks: [
       {
         kind: 'intro',
-        text: 'A partial is a block you build once and reuse across templates — a header, a footer, an unsubscribe line, a support-contact block.',
+        text: 'A partial is a block you build once and reuse across templates: a header, a footer, an unsubscribe line, a support-contact block.',
       },
       {
         kind: 'paragraph',
@@ -22,7 +22,7 @@ export const PARTIALS: HelpArticle[] = [
       {
         kind: 'callout',
         variant: 'info',
-        text: 'Making a partial required for certain templates is a separate, admin-only feature built on top of this — see [Why templates need review](/help/why-templates-need-review). Required rules enforce consistency; the reuse itself is what a partial is for.',
+        text: 'Making a partial required for certain templates is a separate, admin-only feature built on top of this. See [Why templates need review](/help/why-templates-need-review). Required rules enforce consistency; the reuse itself is what a partial is for.',
       },
       {
         kind: 'related',
@@ -74,17 +74,17 @@ export const PARTIALS: HelpArticle[] = [
     blocks: [
       {
         kind: 'intro',
-        text: 'A partial is a block you build once and reuse across templates — a footer, an unsubscribe line, a support-contact block. Change it in one place and every template that uses it updates on the next send.',
+        text: 'A partial is a block you build once and reuse across templates: a footer, an unsubscribe line, a support-contact block. Change it in one place and every template that uses it updates on the next send.',
       },
       { kind: 'heading', text: 'Create a partial' },
       {
         kind: 'steps',
         items: [
           { text: 'On the **Partials** page, select **+ New partial**.' },
-          { text: 'Choose the **Section** — Header, Body, or Footer. A template holds one Header, one Footer, and any number of Body blocks.' },
+          { text: 'Choose the **Section**: Header, Body, or Footer. A template holds one Header, one Footer, and any number of Body blocks.' },
           { text: 'Choose the **Created by** team that owns the block.' },
           {
-            text: 'Write the content. To include a value that fills in when the email is sent, select **Variable** in the toolbar — it appears as a chip, {{ user.name }}.',
+            text: 'Write the content. To include a value that fills in when the email is sent, select **Variable** in the toolbar. It appears as a chip, {{ user.name }}.',
             image: { src: '/help-assets/partial-editor-toolbar.png', alt: 'The partial editor toolbar', wide: true, boxes: [{ x: 55.7, y: 22.7, w: 10.1, h: 54.5 }], caption: 'The Variable control in the editor toolbar.' },
           },
           { text: 'Check the preview on the right, then select **Save**.' },
@@ -111,7 +111,7 @@ export const PARTIALS: HelpArticle[] = [
       { kind: 'heading', text: 'Deactivate a partial' },
       {
         kind: 'paragraph',
-        text: 'Select **Deactivate** to take a partial out of use. It is blocked while a template still uses the partial or a rule still requires it — hover the button to see what to resolve first.',
+        text: 'Select **Deactivate** to take a partial out of use. It is blocked while a template still uses the partial or a rule still requires it. Hover the button to see what to resolve first.',
       },
       {
         kind: 'related',

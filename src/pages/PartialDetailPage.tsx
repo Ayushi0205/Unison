@@ -104,7 +104,7 @@ export function PartialDetailPage() {
   const isAdmin = user.role === 'admin'
   const isInactive = partial.lifecycle === 'Inactive'
 
-  // Blast radius is keyed on ACTIVE templates only — they're the ones sending right now.
+  // Blast radius is keyed on ACTIVE templates only - they're the ones sending right now.
   // Drafts are future blast radius (shown as a sub-line). Inactive templates are
   // historical noise: they don't send, they don't block deactivation, and their
   // partial references are discoverable from the template side. Don't show them.
@@ -145,7 +145,7 @@ export function PartialDetailPage() {
 
   return (
     <div className="max-w-5xl space-y-7">
-      {/* Sticky page-header region — top nav + breadcrumbs (or "← Previous Page"
+      {/* Sticky page-header region - top nav + breadcrumbs (or "← Previous Page"
           variant when from-param set) + identity strip with name/status/actions.
           The body content below scrolls under this header. */}
       <div className="sticky top-0 bg-white z-10 pt-6 pb-4 space-y-3 border-b border-gray-100">
@@ -166,7 +166,7 @@ export function PartialDetailPage() {
           ]} />
         )}
 
-        {/* Identity strip — name, status, inline metadata, admin actions */}
+        {/* Identity strip - name, status, inline metadata, admin actions */}
         <div className="flex items-start justify-between gap-4">
           <div className="flex items-center gap-3 flex-wrap min-w-0">
             <h1 className={`text-2xl font-semibold ${isInactive ? 'text-gray-400 line-through' : 'text-gray-900'}`}>
@@ -311,7 +311,7 @@ export function PartialDetailPage() {
           right sidebar = Details + Variables accordions.
           "Used in templates" lives below as a full-width section. */}
       <div className="flex gap-6 items-start">
-        {/* LEFT — Preview/Source main content */}
+        {/* LEFT - Preview/Source main content */}
         <section className="flex-[3] min-w-0 space-y-3">
           <div className="flex items-center justify-between">
             <h2 className="text-lg font-semibold text-gray-900">Preview</h2>
@@ -391,12 +391,12 @@ export function PartialDetailPage() {
           </div>
           {view === 'source' && (
             <p className="text-xs text-gray-500">
-              Variables in <code className="text-amber-700">{`{{amber}}`}</code> can appear inside HTML attributes — those aren't visible in the rendered preview.
+              Variables in <code className="text-amber-700">{`{{amber}}`}</code> can appear inside HTML attributes. Those aren't visible in the rendered preview.
             </p>
           )}
         </section>
 
-        {/* RIGHT SIDEBAR — Details + Variables accordions (matches Template detail pattern). */}
+        {/* RIGHT SIDEBAR - Details + Variables accordions (matches Template detail pattern). */}
         <div className="flex-[2] min-w-0 space-y-4">
           <PartialCollapsibleCard title="Details" open={detailsOpen} onToggle={() => setDetailsOpen((v) => !v)}>
             <dl className="space-y-2.5">
@@ -475,7 +475,7 @@ export function PartialDetailPage() {
         </div>
       </div>
 
-      {/* Used in templates — full-width section below the 2-column layout. */}
+      {/* Used in templates - full-width section below the 2-column layout. */}
       <section className="space-y-3">
         <h2 className="text-lg font-semibold text-gray-900">
           Used in{' '}
@@ -500,7 +500,7 @@ export function PartialDetailPage() {
         )}
 
         {usedIn === 0 ? (
-          // Empty state — two branches: drafts reference it (future blast radius)
+          // Empty state - two branches: drafts reference it (future blast radius)
           // or nothing references it at all. Inactive references aren't surfaced here.
           <div className="border border-dashed border-gray-200 rounded-lg py-6 text-center">
             <p className="text-sm text-gray-500">
@@ -510,7 +510,7 @@ export function PartialDetailPage() {
             </p>
             <p className="text-xs text-gray-400 mt-0.5">
               {draftDependents.length > 0
-                ? `${draftDependents.length} draft${draftDependents.length !== 1 ? 's' : ''} reference it — they'll inherit your changes when activated.`
+                ? `${draftDependents.length} draft${draftDependents.length !== 1 ? 's' : ''} reference it. They'll inherit your changes when activated.`
                 : requiredByTypes.length > 0
                   ? `Required for new templates of type: ${requiredByTypes.join(', ')}.`
                   : 'Safe to edit or deactivate without downstream impact.'}
@@ -547,20 +547,20 @@ export function PartialDetailPage() {
           </div>
         )}
 
-        {/* Drafts sub-line — future blast radius. Shown only when there are drafts AND
+        {/* Drafts sub-line - future blast radius. Shown only when there are drafts AND
             we already have Active dependents (otherwise the empty-state above covers it). */}
         {usedIn > 0 && draftDependents.length > 0 && (
           <p className="text-xs text-gray-500 mt-2 inline-flex items-center gap-1.5">
             <svg className="w-3.5 h-3.5 text-amber-500" fill="currentColor" viewBox="0 0 20 20">
               <path fillRule="evenodd" clipRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm.75-11.25a.75.75 0 00-1.5 0v3.5a.75.75 0 00.22.53l2 2a.75.75 0 101.06-1.06l-1.78-1.78V6.75z" />
             </svg>
-            <span><span className="font-medium text-gray-700">+{draftDependents.length} in draft</span> — will inherit changes on activation.</span>
+            <span><span className="font-medium text-gray-700">+{draftDependents.length} in draft</span>, which will inherit changes on activation.</span>
           </p>
         )}
 
       </section>
 
-      {/* Audit — collapsed by default */}
+      {/* Audit - collapsed by default */}
       {auditEvents.length > 0 && (
         <details className="group">
           <summary className="cursor-pointer text-sm font-medium text-gray-600 hover:text-gray-900 inline-flex items-center gap-1.5 select-none">
@@ -596,7 +596,7 @@ export function PartialDetailPage() {
   )
 }
 
-// Collapsible card used in the right sidebar — header with chevron, click toggles open.
+// Collapsible card used in the right sidebar - header with chevron, click toggles open.
 function PartialCollapsibleCard({
   title, open, onToggle, children,
 }: {

@@ -25,7 +25,7 @@ function compileBodyForPreview(body: string, sampleValues: Record<string, string
   // In the editor we use a plain <span> so the label is naturally editable;
   // here we restore the link semantics. We preserve the inline-block display
   // and add vertical margin for breathing room, but DO NOT inject any
-  // text-align — the surrounding block's alignment (set by the editor's
+  // text-align - the surrounding block's alignment (set by the editor's
   // Align toolbar) controls left/right/center placement of the button.
   result = result.replace(
     /<span\s+data-cta="1"\s+data-cta-url="([^"]*)"[^>]*style="([^"]*)"[^>]*>([\s\S]*?)<\/span>/g,
@@ -55,14 +55,14 @@ function compileBodyForPreview(body: string, sampleValues: Record<string, string
   return result
 }
 
-// Variable token chip — rendered inline as a non-editable span in the contenteditable
+// Variable token chip - rendered inline as a non-editable span in the contenteditable
 // body. Designer reference shows `{{ name }}` with spaces inside braces, amber border,
 // light/transparent background, monospace.
 //
 // The chip is wrapped with zero-width-space (​) sentinels on both sides so the
 // caret has a guaranteed landing zone adjacent to a contenteditable="false" element.
 // Without these, browsers (Chrome especially) fail to render a visible caret next to
-// the chip — the user clicks beside it and sees nothing happen. Same pattern as the
+// the chip - the user clicks beside it and sees nothing happen. Same pattern as the
 // CTA button (see buildCTAHTML).
 function buildVariableChip(name: string): string {
   const trimmed = name.trim()
@@ -76,7 +76,7 @@ function buildVariableChip(name: string): string {
   )
 }
 
-// CTA button HTML builder — opinionated styling, brand-conforming.
+// CTA button HTML builder - opinionated styling, brand-conforming.
 // DF2-7 fix: rendered as a single inline-block <span> (not <a>) so the cursor
 // stays inside while editing. The URL is preserved on data-cta-url and
 // rehydrated to <a> in compileBodyForPreview. Zero-width-space sentinels on
@@ -183,15 +183,15 @@ function ImageIcon() {
   )
 }
 function ButtonIcon() {
-  // DF2-9: bullseye-pointer (FontAwesome style) — bullseye in upper-left with
+  // DF2-9: bullseye-pointer (FontAwesome style) - bullseye in upper-left with
   // a mouse-cursor arrow whose hot-point sits at the bullseye center; the
   // cursor body sweeps down-right.
   return (
     <svg className="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.6} strokeLinecap="round" strokeLinejoin="round">
-      {/* Bullseye — outer ring + filled center dot */}
+      {/* Bullseye - outer ring + filled center dot */}
       <circle cx="9" cy="9" r="5.5" />
       <circle cx="9" cy="9" r="1.5" fill="currentColor" stroke="none" />
-      {/* Mouse cursor — tip at bullseye center, body angles to lower-right.
+      {/* Mouse cursor - tip at bullseye center, body angles to lower-right.
           Classic notched cursor shape: tip → right-edge → notch → tail → close. */}
       <path
         d="M9 9 L20 13 L14.5 14.5 L17 20 L14.5 21 L12 15.5 Z"
@@ -204,7 +204,7 @@ function ButtonIcon() {
   )
 }
 function TextSizeIcon() {
-  // DF2-8: text-size icon — small T next to large T (designer reference).
+  // DF2-8: text-size icon - small T next to large T (designer reference).
   return (
     <span className="inline-flex items-baseline gap-[1px] text-gray-700 select-none leading-none">
       <span className="text-[9px] font-semibold">T</span>
@@ -282,7 +282,7 @@ export function PartialEditorPage() {
   // Set initial content into the contenteditable on mount, on mode-switch,
   // and whenever the route id changes (so the editor re-initializes when
   // navigating between partials without remount). Body changes from live
-  // typing are NOT a dependency — we don't want to wipe the user's caret.
+  // typing are NOT a dependency - we don't want to wipe the user's caret.
   // eslint-disable-next-line react-hooks/exhaustive-deps
   useEffect(() => {
     if (mode === 'rich' && editorRef.current) {
@@ -403,7 +403,7 @@ export function PartialEditorPage() {
     if (editorRef.current) setBody(editorRef.current.innerHTML)
   }
 
-  // Editor keystrokes around variable chips. A var-chip is an atomic token —
+  // Editor keystrokes around variable chips. A var-chip is an atomic token -
   // the caret cannot land inside it, and Backspace/Delete adjacent to it must
   // remove the chip in a single keystroke (browser default doesn't, because
   // the chip is contenteditable="false").
@@ -432,7 +432,7 @@ export function PartialEditorPage() {
     }
     const isWhitespaceOnlyText = (n: Node | null): boolean => {
       if (!n || n.nodeType !== Node.TEXT_NODE) return false
-      // Treat nbsp ( ) and zero-width space (​) as whitespace too —
+      // Treat nbsp ( ) and zero-width space (​) as whitespace too -
       // the former is the spacer inserted after a chip; the latter is the
       // caret-landing sentinel that wraps every chip.
       return !(n.textContent || '').replace(/[\s ​]/g, '').length
@@ -571,7 +571,7 @@ export function PartialEditorPage() {
 
   // Apply text-align to EVERY block-level child of the editor, not just the
   // block containing the caret. The default execCommand('justifyCenter') only
-  // aligns the current block — but users expect Align Center / Right to align
+  // aligns the current block - but users expect Align Center / Right to align
   // the whole document, the way it works in Google Docs / Notion at the page
   // level. If the editor has only a bare text node, wrap it in a div first so
   // text-align has somewhere to live.
@@ -614,7 +614,7 @@ export function PartialEditorPage() {
     setPopover(kind)
   }
 
-  // ── Preview HTML — substitutes sample values, amber-chips unfilled tokens ──
+  // ── Preview HTML - substitutes sample values, amber-chips unfilled tokens ──
   const compiledBody = body
     ? compileBodyForPreview(body, sampleValues)
     : '<p style="color:#9ca3af;font-style:italic">Start writing your partial to see a live preview.</p>'
@@ -636,7 +636,7 @@ export function PartialEditorPage() {
     const win = window.open('', '_blank')
     if (!win) return
     win.document.write(previewHtml)
-    win.document.title = name || 'Untitled partial — preview'
+    win.document.title = name || 'Untitled partial preview'
     win.document.close()
   }
 
@@ -657,7 +657,7 @@ export function PartialEditorPage() {
               ]
         } />
 
-      {/* Editable page header — matches `Screenshot_7.12.00`:
+      {/* Editable page header - matches `Screenshot_7.12.00`:
           editable title, Cancel (secondary) + Save (primary) buttons, overflow "…" menu
           (edit-mode only), bottom divider line under the entire row. */}
       <div className="flex items-start justify-between gap-6 mt-4 pb-4 border-b border-gray-200">
@@ -689,7 +689,7 @@ export function PartialEditorPage() {
           >
             Save
           </button>
-          {/* Overflow menu — visible only when editing an existing partial.
+          {/* Overflow menu - visible only when editing an existing partial.
               "Delete" is a placeholder for now; will wire to a confirm modal in Phase 8. */}
           {isEdit && (
             <OverflowMenu
@@ -709,7 +709,7 @@ export function PartialEditorPage() {
       )}
       </div>
 
-      {/* Details accordion — per designer feedback item 14, the metadata fields
+      {/* Details accordion - per designer feedback item 14, the metadata fields
           (Section, Created by, etc.) live in a collapsible "Details" section so the
           edit-mode UI matches the view-page structure. Open by default. */}
       <EditorPartialDetailsAccordion>
@@ -758,7 +758,7 @@ export function PartialEditorPage() {
               ))}
             </span>
           ) : (
-            <span className="text-sm text-gray-400">—</span>
+            <span className="text-sm text-gray-400">None</span>
           )}
         </MetaField>
 
@@ -767,7 +767,7 @@ export function PartialEditorPage() {
         )}
       </EditorPartialDetailsAccordion>
 
-      {/* Blast-radius warning — only fires when dependent templates exist.
+      {/* Blast-radius warning - only fires when dependent templates exist.
           Governance role lives in the metadata row above as a property, not a warning. */}
       {isEdit && dependentTemplates.length > 0 && (
         <div className="mt-4 bg-amber-50 border border-amber-200 rounded-md px-4 py-3 text-sm text-amber-900 flex items-start gap-2">
@@ -799,7 +799,7 @@ export function PartialEditorPage() {
         restoreSelection={restoreSelection}
       />
 
-      {/* Editor — full width (preview opens in a new tab via the page header). */}
+      {/* Editor - full width (preview opens in a new tab via the page header). */}
       <div className="mt-3 space-y-3">
         <div className="border border-gray-200 rounded-md bg-white overflow-hidden">
           {mode === 'rich' ? (
@@ -826,7 +826,7 @@ export function PartialEditorPage() {
           )}
         </div>
 
-        {/* Variables — collapsible accordion at bottom, with sample-value inputs
+        {/* Variables - collapsible accordion at bottom, with sample-value inputs
             that feed the new-tab preview. */}
         <VariablesContract
           varRefs={varRefs}
@@ -850,7 +850,7 @@ export function PartialEditorPage() {
           ]}
           // Prefill Display text with the user's current selection so that
           // highlighting a phrase + clicking Insert link turns that phrase
-          // into the link — no retyping required.
+          // into the link - no retyping required.
           initialValues={{
             text: (savedRange.current?.toString() || '').trim(),
           }}
@@ -913,7 +913,7 @@ export function PartialEditorPage() {
         }
       `}</style>
 
-      {/* DF2: Custom Discard-changes modal — replaces native window.confirm. */}
+      {/* DF2: Custom Discard-changes modal - replaces native window.confirm. */}
       <ConfirmModal
         open={discardOpen}
         title="Discard changes?"
@@ -1003,7 +1003,7 @@ function VariablesContract({
                 <p className="text-xs text-amber-800">
                   <span className="font-medium">− Removed:</span>{' '}
                   {removedVars.map((v) => `{{${v}}}`).join(', ')}{' '}
-                  — templates that declare these may need updates.
+                  Templates that declare these may need updates.
                 </p>
               )}
             </div>
@@ -1073,9 +1073,9 @@ function EditorToolbar({
   const richEnabled = mode === 'rich'
   return (
     <div className="sticky top-0 z-10 mt-4 bg-white border border-gray-200 rounded-md px-2 py-1.5 flex items-center gap-2">
-      {/* Tools — wrap on very narrow widths but never push the right-side toggle to a new row */}
+      {/* Tools - wrap on very narrow widths but never push the right-side toggle to a new row */}
       <div className="flex items-center gap-1 flex-wrap flex-1 min-w-0">
-      {/* Heading dropdown (aT ▾) — first item per designer reference */}
+      {/* Heading dropdown (aT ▾) - first item per designer reference */}
       <ToolbarGroup>
         <HeadingDropdown exec={exec} disabled={!richEnabled} activeBlock={active.block} saveSelection={saveSelection} restoreSelection={restoreSelection} />
       </ToolbarGroup>
@@ -1138,7 +1138,7 @@ function EditorToolbar({
       </ToolbarGroup>
 
 
-      {/* Insert tools — Link/Image icon-only; Button and Variable carry text labels per designer reference */}
+      {/* Insert tools - Link/Image icon-only; Button and Variable carry text labels per designer reference */}
       <ToolbarGroup>
         <TBtn label="Insert link" onClick={() => openPopover('link')} disabled={!richEnabled}>
           <LinkIcon />
@@ -1156,7 +1156,7 @@ function EditorToolbar({
       </ToolbarGroup>
       </div>
 
-      {/* TEXT EDITOR / </> HTML toggle — locked to the right of the toolbar in one row */}
+      {/* TEXT EDITOR / </> HTML toggle - locked to the right of the toolbar in one row */}
       <div className="shrink-0 flex items-center bg-gray-100 rounded p-0.5">
         <button
           onClick={() => onMode('rich')}
@@ -1231,7 +1231,7 @@ function HeadingDropdown({
           e.target.value = ''
         }}
         className="appearance-none h-7 w-12 pl-8 bg-transparent border-0 rounded hover:bg-gray-100 disabled:opacity-30 disabled:cursor-not-allowed cursor-pointer focus:outline-none text-transparent"
-        title={`Block format — current: ${currentLabel}`}
+        title={`Block format (current: ${currentLabel})`}
         value=""
         aria-label="Heading style"
       >
@@ -1260,7 +1260,7 @@ function AlignDropdown({
         e.target.value = ''
       }}
       className="h-7 text-xs text-gray-700 bg-transparent border-0 px-1 rounded hover:bg-gray-100 disabled:opacity-30 disabled:cursor-not-allowed cursor-pointer focus:outline-none"
-      title="Alignment — applies to the whole document"
+      title="Alignment (applies to the whole document)"
       value=""
     >
       <option value="" disabled>Align ▾</option>
@@ -1287,7 +1287,7 @@ function VariableDropdown({
         title="Insert a placeholder that fills with real data when the email is sent"
         className="h-7 px-2.5 inline-flex items-center gap-1.5 rounded-md text-xs text-gray-900 bg-amber-50 border border-amber-700 hover:bg-amber-100 disabled:opacity-30 disabled:cursor-not-allowed font-medium"
       >
-        {/* Curly-brace glyph — mirrors the `{{ }}` token syntax */}
+        {/* Curly-brace glyph - mirrors the `{{ }}` token syntax */}
         <span className="font-mono text-[12px] leading-none tracking-tight text-gray-900">{'{ }'}</span>
         Variable
       </button>

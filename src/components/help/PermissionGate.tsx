@@ -11,7 +11,7 @@ export function PermissionGate({ roles, note }: { roles: Role[]; note?: string }
       {roles.map((r) => (
         <RoleBadge key={r} label={ROLE_LABEL[r]} />
       ))}
-      {note && <span className="text-gray-500">— {note}</span>}
+      {note && <span className="text-gray-500">({note})</span>}
     </div>
   )
 }

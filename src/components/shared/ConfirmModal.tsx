@@ -40,7 +40,7 @@ export function ConfirmModal({
         role="dialog"
         aria-modal="true"
       >
-        {/* Title row — destructive variant shows a red warning triangle (Screenshot_7.50.01). */}
+        {/* Title row - destructive variant shows a red warning triangle (Screenshot_7.50.01). */}
         <div className="px-5 py-4 flex items-start gap-3">
           {isDestructive && (
             <div className="shrink-0 text-red-600 mt-0.5">

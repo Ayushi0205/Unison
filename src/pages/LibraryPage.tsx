@@ -65,7 +65,7 @@ export function LibraryPage() {
 
   const allTemplates = getAllTemplates()
 
-  // Base list — all structural filters except applied search.
+  // Base list - all structural filters except applied search.
   // The typeahead derives its suggestions from this so it isn't constrained by
   // a previously-applied search filter.
   const filteredBase = useMemo(() => {
@@ -97,8 +97,8 @@ export function LibraryPage() {
     return items
   }, [scope, filterTeam, filterType, filterStatus, filterProgram, filterOwner, filterTagsRaw, filterNonCompliant, sortField, sortDir, user])
 
-  // Visible list — base + applied search.
-  // Live search input (`q`) does NOT filter the list — it's a pure typeahead.
+  // Visible list - base + applied search.
+  // Live search input (`q`) does NOT filter the list - it's a pure typeahead.
   // The list filters by `appliedSearch` only, set when the user clicks "See all
   // results" in the dropdown. Decoupling these prevents reactive filter behaviour
   // while still letting users commit to a search.
@@ -113,7 +113,7 @@ export function LibraryPage() {
   // ── Typeahead suggestions ────────────────────────────────────────────────
   // Appears below the search input after 3+ characters. Respects all active
   // filters (team/type/status/etc.) so suggestions are scoped to what's visible.
-  // Inline list filtering still happens character-by-character — typeahead is
+  // Inline list filtering still happens character-by-character - typeahead is
   // additive for the "I know which template I want" job, not a replacement.
   const navigate = useNavigate()
   const [showSuggestions, setShowSuggestions] = useState(false)
@@ -127,7 +127,7 @@ export function LibraryPage() {
   const scoredMatches = useMemo(() => {
     if (searchQ.trim().length < 3) return []
     const q = searchQ.toLowerCase()
-    // Match against the base (structurally-filtered) list — NOT `filtered` — so
+    // Match against the base (structurally-filtered) list - NOT `filtered` - so
     // suggestions aren't restricted by a previously-applied search.
     return [...filteredBase]
       .map((t) => {
@@ -147,7 +147,7 @@ export function LibraryPage() {
   const suggestions = useMemo(() => scoredMatches.slice(0, 5).map((m) => m.template), [scoredMatches])
   const matchCount = scoredMatches.length
 
-  // Reset to "no explicit highlight" whenever the query changes — so Enter defaults
+  // Reset to "no explicit highlight" whenever the query changes - so Enter defaults
   // to "see all results" until the user actively arrow-keys to a suggestion.
   useEffect(() => {
     setHighlightedIndex(-1)
@@ -166,7 +166,7 @@ export function LibraryPage() {
   }, [showSuggestions])
 
   // Note: nonCompliantCount + totalAll were used by the old PageHeader (count display +
-  // "N need updates →" warning button). Both removed per designer feedback — the sidebar
+  // "N need updates →" warning button). Both removed per designer feedback - the sidebar
   // amber triangle covers the non-compliant signal, and pagination handles the count.
 
   const totalPages = Math.max(1, Math.ceil(filtered.length / pageSize))
@@ -174,7 +174,7 @@ export function LibraryPage() {
 
   // Count of side-panel ("More filters") filters that are active. Drives the badge
   // on the More filters trigger button. Top-level filters (team/type/status) are NOT
-  // counted here — they have their own trigger UI in the main filter row.
+  // counted here - they have their own trigger UI in the main filter row.
   const moreFiltersCount =
     (filterProgram ? 1 : 0) +
     (filterOwner ? 1 : 0) +
@@ -205,7 +205,7 @@ export function LibraryPage() {
   })
   if (filterNonCompliant) activeFilters.push({ key: 'nonCompliant', label: 'Compliance', value: 'Needs update', onRemove: () => setParam('nonCompliant', '') })
   // Applied search filter (set by "See all results"). Shown as a dismissible chip.
-  // Note: this is `qList`, not `q` — the live typeahead query isn't shown as a chip.
+  // Note: this is `qList`, not `q` - the live typeahead query isn't shown as a chip.
   if (appliedSearch) activeFilters.push({ key: 'qList', label: 'Search', value: appliedSearch, onRemove: () => setParam('qList', '') })
 
   const toggleSort = (field: SortField) => {
@@ -260,7 +260,7 @@ export function LibraryPage() {
                 setHighlightedIndex((i) => Math.min(i + 1, suggestions.length - 1))
               } else if (e.key === 'ArrowUp' && hasSuggestions) {
                 e.preventDefault()
-                // Floor at -1 — allows backing out to "no highlight" state
+                // Floor at -1 - allows backing out to "no highlight" state
                 setHighlightedIndex((i) => Math.max(i - 1, -1))
               } else if (e.key === 'Enter') {
                 e.preventDefault()
@@ -301,7 +301,7 @@ export function LibraryPage() {
             </button>
           )}
 
-          {/* Typeahead dropdown — minimalist:
+          {/* Typeahead dropdown - minimalist:
               - Name + subject always visible
               - No status pills (status is discoverable on the detail page)
               - Match highlight on either field
@@ -313,7 +313,7 @@ export function LibraryPage() {
                   key={t.id}
                   type="button"
                   onClick={() => {
-                    // Apply the typed query as a list filter — don't navigate directly.
+                    // Apply the typed query as a list filter - don't navigate directly.
                     // The dropdown shows only top 5; there may be many more matches.
                     // Filtering first lets the user browse all results, then pick one.
                     setParam('qList', searchQ)
@@ -332,7 +332,7 @@ export function LibraryPage() {
                 </button>
               ))}
 
-              {/* See all results — single centered link, no info-row clutter */}
+              {/* See all results - single centered link, no info-row clutter */}
               <button
                 type="button"
                 onClick={() => {
@@ -368,7 +368,7 @@ export function LibraryPage() {
           ]}
         />
 
-        {/* "More filters" trigger — opens the slide-in side panel. Badge shows count
+        {/* "More filters" trigger - opens the slide-in side panel. Badge shows count
             of applied side-panel filters (project, owner, tags, template updates). */}
         <button
           onClick={() => setShowMoreFilters(true)}
@@ -405,7 +405,7 @@ export function LibraryPage() {
         </button>
       </div>
 
-      {/* Applied filters — DF2: grouped by category (Tag: A · B · C), collapses
+      {/* Applied filters - DF2: grouped by category (Tag: A · B · C), collapses
           to one line via chevron only when chips wrap. */}
       <AppliedFiltersBar
         filters={activeFilters}
@@ -416,7 +416,7 @@ export function LibraryPage() {
         }}
       />
 
-      {/* Pagination row — matches `Screenshot_6.30.51`:
+      {/* Pagination row - matches `Screenshot_6.30.51`:
           all elements left-aligned in one cluster, "1-N" range emphasised in bold dark text. */}
       <div className="flex items-center gap-3 text-sm text-gray-600 flex-wrap">
         <div>
@@ -466,7 +466,7 @@ export function LibraryPage() {
           action={canEdit ? <Link to="/templates/new" className="bg-primary text-white px-4 py-2 rounded-md text-sm font-medium hover:bg-primary-hover transition-colors">+ New template</Link> : undefined}
         />
       ) : demoState === 'happy' && filtered.length === 0 && activeFilters.length > 0 ? (
-        // "No results found" — matches Screenshot_7.56.08 (magnifier icon + designer copy)
+        // "No results found" - matches Screenshot_7.56.08 (magnifier icon + designer copy)
         <EmptyState
           icon={
             <svg className="w-16 h-16" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
@@ -512,7 +512,7 @@ export function LibraryPage() {
         </div>
       )}
 
-      {/* More filters side panel — slides in from the right per `Screenshot_6.28.11`.
+      {/* More filters side panel - slides in from the right per `Screenshot_6.28.11`.
           Filters apply immediately on change (same as the top-row filters); the Apply
           button at the bottom acts as a "Done" affordance that closes the panel. */}
       {showMoreFilters && (
@@ -535,11 +535,11 @@ export function LibraryPage() {
   )
 }
 
-// Read-only page header — matches PageHeader.jpg from the designer's spec:
+// Read-only page header - matches PageHeader.jpg from the designer's spec:
 // Title + subtitle on the left, primary green action on the right, bottom divider line.
 // Template count was removed (lives in pagination per designer feedback).
 // "N need updates →" warning button was removed (sidebar amber triangle covers this,
-// and table sort surfaces those templates first per item 12 — handled in Phase 3).
+// and table sort surfaces those templates first per item 12 - handled in Phase 3).
 function PageHeader({ canEdit }: { canEdit: boolean }) {
   return (
     <div className="sticky top-0 bg-white z-10 pt-6 pb-6 border-b border-gray-200 flex items-start justify-between gap-4">
@@ -586,7 +586,7 @@ function TemplateRow({ template: t, canEdit }: { template: Template; canEdit: bo
 
   return (
     <tr className="border-b border-gray-100 hover:bg-gray-50/50 transition-colors">
-      {/* NAME — link + amber ⚠ icon (when template needs governance update).
+      {/* NAME - link + amber ⚠ icon (when template needs governance update).
           No subject preview in this row per `Screenshot_6.30.51`. */}
       <td className="px-4 py-4">
         <div className="flex items-center gap-2 min-w-0">
@@ -630,7 +630,7 @@ function TemplateRow({ template: t, canEdit }: { template: Template; canEdit: bo
       </td>
       {canEdit && (
         <td className="px-4 py-4">
-          {/* Actions — icon-only with custom Tooltip (per designer feedback,
+          {/* Actions - icon-only with custom Tooltip (per designer feedback,
               using the Tooltip component instead of native `title`). */}
           <div className="flex items-center gap-1">
             <Tooltip label="Edit" placement="top">
@@ -657,7 +657,7 @@ function TemplateRow({ template: t, canEdit }: { template: Template; canEdit: bo
 }
 
 /**
- * More Filters side panel — slides in from the right with collapsible accordions
+ * More Filters side panel - slides in from the right with collapsible accordions
  * for each filter group. Matches `Screenshot_6.28.11`.
  *
  * Filter changes apply immediately (existing URL-param pattern); the Apply button
@@ -681,7 +681,7 @@ function MoreFiltersPanel({
   onChangeNonCompliant: (v: boolean) => void
   onClose: () => void
 }) {
-  // Accordion open state — each section opens by default if its filter is active,
+  // Accordion open state - each section opens by default if its filter is active,
   // so users land on the panel with active filters visible without needing to expand.
   const [openUpdates, setOpenUpdates] = useState(true)
   const [openProjects, setOpenProjects] = useState(true)

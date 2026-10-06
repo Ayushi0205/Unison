@@ -65,7 +65,7 @@ function ProjectForm({
   const valid = form.name.trim().length > 0 && form.client.trim().length > 0
 
   return (
-    // DF2: Slide-in side panel — replaces the inline expanding card.
+    // DF2: Slide-in side panel - replaces the inline expanding card.
     <div className="fixed inset-0 z-40 flex justify-end" role="dialog" aria-modal="true">
       <div className="absolute inset-0 bg-gray-900/20" onClick={onCancel} />
       <aside className="relative w-full max-w-[480px] h-full bg-white shadow-xl border-l border-gray-200 flex flex-col">
@@ -228,7 +228,7 @@ function ProjectRow({
               {plural(count, 'template')}
             </Link>
           ) : (
-            <span className="text-sm text-gray-400">—</span>
+            <span className="text-sm text-gray-400">None</span>
           )}
         </td>
 
@@ -299,7 +299,7 @@ type PanelState =
 export function ProgramsPage() {
   const { show: toast } = useToast()
 
-  // local state (optimistic; resets on refresh — intentional for v0)
+  // local state (optimistic; resets on refresh - intentional for v0)
   const [projects, setProjects] = useState<Project[]>(() => [...PROJECTS])
   // Every project change is saved to the visitor's demo store.
   const updateProjects = (fn: (prev: Project[]) => Project[]) =>

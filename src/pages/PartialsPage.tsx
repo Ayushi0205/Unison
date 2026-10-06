@@ -54,7 +54,7 @@ export function PartialsPage() {
   const toast = useToast()
   const [searchParams, setSearchParams] = useSearchParams()
   const [demoState, setDemoState] = useState<'happy' | 'loading' | 'error' | 'empty'>('happy')
-  // Row-action state — which partial is being confirmed and for what action.
+  // Row-action state - which partial is being confirmed and for what action.
   // One modal at the page level keeps the implementation simple (only one
   // partial can be in confirm state at a time).
   const [rowAction, setRowAction] = useState<{ kind: 'duplicate' | 'deactivate'; partial: Partial } | null>(null)
@@ -86,7 +86,7 @@ export function PartialsPage() {
     setSearchParams(next)
   }
 
-  // Base list — structural filters only (team, section, status, sort).
+  // Base list - structural filters only (team, section, status, sort).
   // The typeahead derives its suggestions from this so it isn't constrained by
   // a previously-applied search filter.
   const filteredBase = useMemo(() => {
@@ -111,7 +111,7 @@ export function PartialsPage() {
     return items
   }, [filterTeam, filterSection, filterStatus, sortField, sortDir, lifecycleOverrides, duplicatedPartials])
 
-  // Visible list — base + applied search (committed via dropdown, not live typing).
+  // Visible list - base + applied search (committed via dropdown, not live typing).
   const filtered = useMemo(() => {
     if (!appliedSearch) return filteredBase
     const q = appliedSearch.toLowerCase()
@@ -265,7 +265,7 @@ export function PartialsPage() {
             </button>
           )}
 
-          {/* Typeahead dropdown — name + body-text preview sub-line (no subject on partials) */}
+          {/* Typeahead dropdown - name + body-text preview sub-line (no subject on partials) */}
           {showSuggestions && searchQ.trim().length >= 3 && suggestions.length > 0 && (
             <div className="absolute left-0 right-0 top-full mt-1 bg-white border border-gray-200 rounded-md shadow-lg z-30 overflow-hidden">
               {suggestions.map((p, idx) => {
@@ -275,7 +275,7 @@ export function PartialsPage() {
                     key={p.id}
                     type="button"
                     onClick={() => {
-                      // Filter list by typed query — don't navigate directly.
+                      // Filter list by typed query - don't navigate directly.
                       // Dropdown shows top 5 only; filtering reveals all matches.
                       setParam('qList', searchQ)
                       setShowSuggestions(false)
@@ -341,13 +341,13 @@ export function PartialsPage() {
         />
       </div>
 
-      {/* Applied filters — DF2: grouped + responsive collapse via shared bar. */}
+      {/* Applied filters - DF2: grouped + responsive collapse via shared bar. */}
       <AppliedFiltersBar
         filters={activeFilters}
         onClearAll={() => setSearchParams(new URLSearchParams())}
       />
 
-      {/* Pagination row — matches Templates pattern */}
+      {/* Pagination row - matches Templates pattern */}
       <div className="flex items-center gap-3 text-sm text-gray-600 flex-wrap">
         <div>
           <span className="text-gray-900 font-semibold">{Math.min((page - 1) * pageSize + 1, filtered.length)}–{Math.min(page * pageSize, filtered.length)}</span>
@@ -400,7 +400,7 @@ export function PartialsPage() {
           action={isAdmin ? <Link to="/admin/partials/new" className="bg-primary text-white px-4 py-2 rounded-md text-sm font-medium hover:bg-primary-hover transition-colors">+ New partial</Link> : undefined}
         />
       ) : demoState === 'happy' && filtered.length === 0 && activeFilters.length > 0 ? (
-        // "No results found" — matches Screenshot_7.56.08
+        // "No results found" - matches Screenshot_7.56.08
         <EmptyState
           icon={
             <svg className="w-16 h-16" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
@@ -454,7 +454,7 @@ export function PartialsPage() {
         </div>
       )}
 
-      {/* Row-action confirmation modals — driven by `rowAction` state.
+      {/* Row-action confirmation modals - driven by `rowAction` state.
           Duplicate uses primary variant + success toast.
           Deactivate uses destructive variant + destructive toast + lifecycle override. */}
       <ConfirmModal
@@ -518,7 +518,7 @@ export function PartialsPage() {
   )
 }
 
-// Read-only page header — matches `PageHeader.jpg`. No count (pagination shows it),
+// Read-only page header - matches `PageHeader.jpg`. No count (pagination shows it),
 // title + subtitle on left, primary green CTA on right, bottom divider.
 function PageHeader({ isAdmin }: { isAdmin: boolean }) {
   return (
@@ -556,7 +556,7 @@ function RowCopyIcon() {
   return <Copy className="w-4 h-4" aria-hidden="true" />
 }
 function RowDeactivateIcon() {
-  // Circle with diagonal line — "no entry" / deactivate
+  // Circle with diagonal line - "no entry" / deactivate
   return (
     <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.8}>
       <circle cx="12" cy="12" r="9" />
@@ -578,7 +578,7 @@ function PartialRow({
 
   return (
     <tr className="border-b border-gray-100 hover:bg-gray-50/50 transition-colors">
-      {/* NAME — link only (no status pill inline; status is its own column now) */}
+      {/* NAME - link only (no status pill inline; status is its own column now) */}
       <td className="px-4 py-4">
         <Link to={`/partials/${p.id}`} className="text-sm text-primary font-medium hover:underline">
           {p.name}
@@ -588,13 +588,13 @@ function PartialRow({
       <td className="px-4 py-4 text-sm text-gray-900">{p.authoringTeam}</td>
       {/* SECTION */}
       <td className="px-4 py-4 text-sm text-gray-900">{p.section}</td>
-      {/* USED IN TEMPLATES — value formatted as "N templates" per designer feedback */}
+      {/* USED IN TEMPLATES - value formatted as "N templates" per designer feedback */}
       <td className="px-4 py-4 text-sm text-gray-900">
         {usedIn} {usedIn === 1 ? 'template' : 'templates'}
       </td>
-      {/* STATUS — separate column (was previously inline on Name) */}
+      {/* STATUS - separate column (was previously inline on Name) */}
       <td className="px-4 py-4"><StatusPill status={p.lifecycle} /></td>
-      {/* UPDATED — date + "by Author" stacked */}
+      {/* UPDATED - date + "by Author" stacked */}
       <td className="px-4 py-4 text-sm text-gray-500">
         <div className="text-gray-900">{format(new Date(p.updatedAt), 'MMM d, yyyy')}</div>
         <div className="text-xs text-gray-500 mt-0.5">
@@ -603,7 +603,7 @@ function PartialRow({
       </td>
       {canEdit && (
         <td className="px-4 py-4">
-          {/* Actions — icon-only with custom Tooltip per designer feedback.
+          {/* Actions - icon-only with custom Tooltip per designer feedback.
               Pencil = Edit · Copy = Duplicate · ⊘ = Deactivate (admin + active only).
               Deactivate is disabled when the partial is used by ≥1 template. */}
           <div className="flex items-center gap-1">
@@ -628,7 +628,7 @@ function PartialRow({
             </Tooltip>
             {isAdmin && p.lifecycle === 'Active' && (
               <Tooltip
-                label={usedIn > 0 ? `Used by ${usedIn} ${usedIn === 1 ? 'template' : 'templates'} — resolve dependencies first` : 'Deactivate'}
+                label={usedIn > 0 ? `Used by ${usedIn} ${usedIn === 1 ? 'template' : 'templates'}. Resolve dependencies first.` : 'Deactivate'}
                 placement="top"
                 align="end"
               >

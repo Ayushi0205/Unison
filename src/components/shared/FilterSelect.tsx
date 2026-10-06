@@ -1,5 +1,5 @@
 /**
- * Filter dropdown — shared across list pages.
+ * Filter dropdown - shared across list pages.
  *
  * Designer reference (DF2 item 11):
  *   - Default state: placeholder in gray, vertical divider before chevron.
