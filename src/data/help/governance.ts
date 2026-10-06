@@ -9,15 +9,15 @@ export const GOVERNANCE: HelpArticle[] = [
     blocks: [
       {
         kind: 'intro',
-        text: 'Some templates must include certain partials before they can send — a legal footer, an unsubscribe line. This is how the portal makes sure those blocks are always there, not just available.',
+        text: 'Some templates must include certain partials before they can send — a legal footer, an unsubscribe line. This is how Unison makes sure those blocks are always there, not just available.',
       },
       {
         kind: 'paragraph',
-        text: 'When a template is missing a partial that a rule requires, an orange triangle shows next to it, and the template lists the missing block with a link to the rule. Until it is added, the template can’t be activated.',
+        text: 'When a template is missing a partial that a rule requires, an amber triangle shows next to it, and the template lists the missing block with a link to the rule. Until it is added, a Draft can’t be activated. A template that was already Active when the rule was added keeps sending, but is flagged for an update.',
       },
       {
         kind: 'image',
-        data: { src: '/help-assets/template-missing-partial.png', alt: 'A template flagged as missing a required partial', placeholder: true, caption: 'A template flagged as missing a required partial.' },
+        data: { src: '/help-assets/template-missing-partial.png', alt: 'A template flagged as missing a required partial', caption: 'A template flagged as missing a required partial.' },
       },
       {
         kind: 'callout',
@@ -49,14 +49,14 @@ export const GOVERNANCE: HelpArticle[] = [
       {
         kind: 'steps',
         items: [
-          { text: 'Go to **Admin → Required partials** and select **+ Add rule**.' },
-          { text: 'Choose the **Team** — a single team, or All teams for a global rule.' },
+          { text: 'Go to **Admin → Required partials** and select **Add rule**.' },
+          { text: 'In the side panel, choose the **Team** — a single team, or All teams for a global rule.' },
           { text: 'Choose the **Template type** the rule applies to.' },
           {
-            text: 'Select one or more **Partials** to require. You can pick several at once.',
-            image: { src: '/help-assets/add-rule-panel.png', alt: 'The Add rule panel', placeholder: true, boxes: [{ x: 6, y: 55, w: 88, h: 30, label: 'Pick partials to require' }], caption: 'Choose the partials to require in the Add rule panel.' },
+            text: 'Select one or more **Required partials**. You can pick several at once.',
+            image: { src: '/help-assets/add-rule-panel.png', alt: 'The Add rule panel', boxes: [{ x: 4, y: 61, w: 92, h: 19.3, label: 'Pick partials to require' }], caption: 'Choose the partials to require in the Add rule panel.' },
           },
-          { text: 'Select **Save rule**.' },
+          { text: 'Select **Add rule**.' },
         ],
       },
       {
@@ -125,11 +125,11 @@ export const GOVERNANCE: HelpArticle[] = [
       { kind: 'intro', text: 'The Admin area is where rules and shared blocks are set. It has three things.' },
       {
         kind: 'actionMap',
-        data: { src: '/help-assets/admin-cards.png', alt: 'The Admin overview cards', placeholder: true },
+        data: { src: '/help-assets/admin-cards.png', alt: 'The Admin overview cards' },
         markers: [
-          { n: 1, x: 20, y: 45, label: 'Required partials', desc: 'Set which partials each template type must include.' },
-          { n: 2, x: 50, y: 45, label: 'Projects', desc: 'Group templates and rules by client or program.' },
-          { n: 3, x: 80, y: 45, label: 'New partial', desc: 'Create a reusable block for teams to use.' },
+          { n: 1, x: 16.9, y: 50, label: 'Required partials', desc: 'Set which partials each template type must include.' },
+          { n: 2, x: 49.2, y: 50, label: 'Projects', desc: 'Group templates and rules by client or program.' },
+          { n: 3, x: 81.5, y: 50, label: 'New partial', desc: 'Create a reusable block for teams to use.' },
         ],
       },
       {

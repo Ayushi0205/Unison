@@ -56,7 +56,7 @@ export function HelpArticleRenderer({ article }: { article: HelpArticle }) {
             return (
               <div
                 key={i}
-                className="flex gap-2.5 items-start bg-[#f3f8f1] border border-[#cfe3c7] rounded-lg px-3.5 py-3 text-[13.5px] text-[#2f5525] max-w-[62ch] mt-1"
+                className="flex gap-2.5 items-start bg-[#e1f5ee] border border-[#b6e0d0] rounded-lg px-3.5 py-3 text-[13.5px] text-[#085041] max-w-[62ch] mt-1"
               >
                 <span aria-hidden>✓</span>
                 <div>{renderInline(b.text)}</div>

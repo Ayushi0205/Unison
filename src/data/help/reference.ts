@@ -7,7 +7,7 @@ export const REFERENCE: HelpArticle[] = [
     title: 'Glossary',
     roles: ['admin', 'editor', 'viewer'],
     blocks: [
-      { kind: 'intro', text: 'Plain-language definitions for the terms used across the portal.' },
+      { kind: 'intro', text: 'Plain-language definitions for the terms used across Unison.' },
       {
         kind: 'table',
         headers: ['Term', 'What it means'],

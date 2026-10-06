@@ -2,7 +2,7 @@ import { renderInline } from './renderInline'
 
 const STYLES = {
   info: 'bg-blue-50 border-blue-200 text-blue-900',
-  'admin-only': 'bg-primary-tint border-[#e2d5ef] text-primary-strong',
+  'admin-only': 'bg-primary-tint border-[#cdeadf] text-primary-strong',
   warning: 'bg-amber-50 border-amber-200 text-amber-900',
 } as const
 

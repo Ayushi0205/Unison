@@ -12,7 +12,7 @@ export function DocSteps({ items }: { items: StepItem[] }) {
           <span className="absolute left-0 top-0 w-[25px] h-[25px] rounded-full bg-primary-strong text-white text-[12.5px] font-bold flex items-center justify-center">
             {i + 1}
           </span>
-          {i < items.length - 1 && <span className="absolute left-3 top-[27px] bottom-0 w-px bg-[#ece8f2]" aria-hidden />}
+          {i < items.length - 1 && <span className="absolute left-3 top-[27px] bottom-0 w-px bg-[#e2e8f0]" aria-hidden />}
           <div className="text-[14px] leading-relaxed pt-0.5">{renderInline(it.text)}</div>
           {it.image && <DocImage data={it.image} />}
         </li>

@@ -42,13 +42,14 @@ export const PARTIALS: HelpArticle[] = [
       { kind: 'intro', text: "The Partials page lists every reusable block. Open one to see where it's used before you change it." },
       {
         kind: 'actionMap',
-        data: { src: '/help-assets/partial-detail.png', alt: 'A partial detail page', placeholder: true },
+        data: { src: '/help-assets/partial-detail.png', alt: 'A partial detail page' },
         markers: [
-          { n: 1, x: 40, y: 12, label: 'Status', desc: 'Active or Inactive.' },
-          { n: 2, x: 30, y: 26, label: 'Preview / Source', desc: 'See it rendered, or read the raw markup.' },
-          { n: 3, x: 70, y: 40, label: 'Variables', desc: 'The values it fills in at send time.' },
-          { n: 4, x: 70, y: 62, label: 'Used in templates', desc: 'Every template that includes this partial.' },
-          { n: 5, x: 70, y: 85, label: 'Activity', desc: 'Who changed it, and when.' },
+          { n: 1, x: 34.5, y: 14.1, label: 'Status', desc: 'Active or Inactive.' },
+          { n: 2, x: 48, y: 14, label: 'Reach', desc: 'How many templates change when you edit this partial.' },
+          { n: 3, x: 86, y: 14.2, label: 'Edit, Duplicate, Deactivate', desc: 'Actions you can take, depending on your role.' },
+          { n: 4, x: 62, y: 21.8, label: 'Preview / HTML', desc: 'See it rendered, or read the source.' },
+          { n: 5, x: 77, y: 28.8, label: 'Details', desc: 'Section, team, and which template types require it.' },
+          { n: 6, x: 26.5, y: 70.7, label: 'Used in templates', desc: 'Every template that includes this partial.' },
         ],
       },
       {
@@ -81,10 +82,10 @@ export const PARTIALS: HelpArticle[] = [
         items: [
           { text: 'On the **Partials** page, select **+ New partial**.' },
           { text: 'Choose the **Section** — Header, Body, or Footer. A template holds one Header, one Footer, and any number of Body blocks.' },
-          { text: 'Choose the **Authoring Team** that owns the block.' },
+          { text: 'Choose the **Created by** team that owns the block.' },
           {
-            text: 'Write the content. To include a value that fills in when the email is sent, select **Insert variable** — it appears as a chip, {{ user.name }}.',
-            image: { src: '/help-assets/partial-editor-toolbar.png', alt: 'The partial editor toolbar', placeholder: true, boxes: [{ x: 68, y: 12, w: 26, h: 60, label: 'Insert variable' }], caption: 'Only the Insert variable control is highlighted — the text carries the rest.' },
+            text: 'Write the content. To include a value that fills in when the email is sent, select **Variable** in the toolbar — it appears as a chip, {{ user.name }}.',
+            image: { src: '/help-assets/partial-editor-toolbar.png', alt: 'The partial editor toolbar', wide: true, boxes: [{ x: 55.7, y: 22.7, w: 10.1, h: 54.5 }], caption: 'The Variable control in the editor toolbar.' },
           },
           { text: 'Check the preview on the right, then select **Save**.' },
         ],
@@ -110,20 +111,7 @@ export const PARTIALS: HelpArticle[] = [
       { kind: 'heading', text: 'Deactivate a partial' },
       {
         kind: 'paragraph',
-        text: 'Select **Deactivate** to take a partial out of use. It is blocked while a template still uses the partial or a rule still requires it — the button shows how many templates to resolve first.',
-      },
-      { kind: 'heading', text: 'Delete a partial' },
-      {
-        kind: 'diagram',
-        nodes: [
-          { label: 'Remove from templates & rules' },
-          { label: 'Deactivate' },
-          { label: 'Delete', result: true },
-        ],
-      },
-      {
-        kind: 'paragraph',
-        text: 'A partial can only be deleted once it is Deactivated. Remove it from any templates and rules, deactivate it, then delete.',
+        text: 'Select **Deactivate** to take a partial out of use. It is blocked while a template still uses the partial or a rule still requires it — hover the button to see what to resolve first.',
       },
       {
         kind: 'related',

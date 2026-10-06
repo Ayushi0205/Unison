@@ -8,7 +8,7 @@ export function RelatedLinks({ links }: { links: { label: string; to: string }[]
         <Link
           key={l.to}
           to={l.to}
-          className="block text-primary-strong font-medium text-[13.5px] py-0.5 no-underline hover:underline before:content-['→'] before:text-[#b9a9cd] before:mr-1.5"
+          className="block text-primary-strong font-medium text-[13.5px] py-0.5 no-underline hover:underline before:content-['→'] before:text-[#94a3b8] before:mr-1.5"
         >
           {l.label}
         </Link>

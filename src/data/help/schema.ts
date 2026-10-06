@@ -29,8 +29,8 @@ export interface DocImageData {
   caption?: string
   /** Highlight boxes over the image; coordinates are % of the rendered image (0–100). */
   boxes?: { x: number; y: number; w: number; h: number; label?: string }[]
-  /** When true, render a marked "screenshot pending" slot instead of loading `src`. */
-  placeholder?: boolean
+  /** Render at the article's full width instead of the default 460px (for wide crops). */
+  wide?: boolean
 }
 
 /** One numbered step. `text` supports **bold** (for UI labels) and inline links. */
