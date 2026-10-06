@@ -1,4 +1,4 @@
-/** Author credit shown on the entry page and in the app footer. */
+/** Author credit shown on the entry page. */
 export const AUTHOR_NAME = 'Ayushi Gupta'
 
 /** Set to the case study page on the portfolio site. Links stay hidden while empty. */
