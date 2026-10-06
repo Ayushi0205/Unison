@@ -2,6 +2,8 @@
 
 **One voice to your contributors, no matter which team is talking.**
 
+**Live demo:** https://ayushi-unison.vercel.app
+
 Unison is a template management product for organizations where many internal teams talk to the same people. A contributor is recruited by Sourcing, prepared by Enablement, reviewed by Quality, and paid by Payments. Each team writes its own messages in its own tools, so tone, branding, and required information drift. Unison gives every team one shared library of templates and reusable partials, with required-partial rules that keep every message consistent.
 
 This is a portfolio product by Ayushi Gupta, built with Claude Code. Meridian Works is a fictional company, and all data is sample data.
