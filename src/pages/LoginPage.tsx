@@ -47,12 +47,13 @@ export function LoginPage() {
 
       <main className="flex-1 flex items-start justify-center px-4 pt-12 pb-16">
         <div className="w-full max-w-2xl">
-          <h1 className="text-3xl font-semibold tracking-tight text-ink">
-            One voice to your contributors, no matter which team is talking.
+          <h1 className="text-4xl font-semibold tracking-tight text-ink">
+            Many teams. One voice.
           </h1>
           <p className="mt-3 text-base text-gray-600">
-            Unison gives every internal team one shared library of templates and reusable partials, so
-            Sourcing, Quality, Payments, and the rest all sound like the same company.
+            Your contributors don't see your org chart. Sourcing recruits them, Quality reviews their
+            work, Payments pays them, and every team writes its own emails. Unison gives every team one
+            shared library of templates and partials, so it all sounds like one company.
           </p>
 
           <h2 className="mt-10 text-sm font-medium text-gray-900">Explore the demo as</h2>

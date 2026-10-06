@@ -1,6 +1,6 @@
 # Unison
 
-**One voice to your contributors, no matter which team is talking.**
+**Many teams. One voice.**
 
 **Live demo:** https://ayushi-unison.vercel.app
 
