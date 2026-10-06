@@ -1,7 +1,6 @@
 import { Outlet } from 'react-router-dom'
 import { TopBar } from './TopBar'
 import { Sidebar } from './Sidebar'
-import { DemoBanner } from './DemoBanner'
 import { AUTHOR_NAME, CASE_STUDY_URL } from '../../config/portfolio'
 import { ToastProvider, ToastStyles } from '../shared/Toast'
 
@@ -11,7 +10,6 @@ export function AppShell() {
       <ToastStyles />
       <div className="h-screen flex flex-col">
         <TopBar />
-        <DemoBanner />
       <div className="flex flex-1 overflow-hidden">
         <Sidebar />
         <main className="flex-1 overflow-y-auto bg-white flex flex-col">

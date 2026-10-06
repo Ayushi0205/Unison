@@ -1,7 +1,7 @@
 import { useState, useRef, useEffect } from 'react'
-import { useNavigate } from 'react-router-dom'
 import { useCurrentUser } from '../../hooks/useCurrentUser'
 import { UnisonLogo } from '../shared/UnisonLogo'
+import { DemoMenu } from './DemoMenu'
 
 // Capitalise the role label (e.g. "admin" → "Admin")
 function formatRole(role: string): string {
@@ -10,7 +10,6 @@ function formatRole(role: string): string {
 
 export function TopBar() {
   const { user } = useCurrentUser()
-  const navigate = useNavigate()
   const [open, setOpen] = useState(false)
   const ref = useRef<HTMLDivElement>(null)
 
@@ -29,6 +28,7 @@ export function TopBar() {
         <UnisonLogo height={24} />
         <span className="text-gray-300">/</span>
         <span className="text-sm text-gray-600">Meridian Works</span>
+        <DemoMenu />
       </div>
 
       {/* Right: user popout chip */}
@@ -62,20 +62,6 @@ export function TopBar() {
             {/* Role */}
             <div className="text-sm text-gray-500 mt-3">{formatRole(user.role)}</div>
 
-            {/* Sign out returns to the demo entry page. */}
-            <button
-              type="button"
-              onClick={() => {
-                setOpen(false)
-                navigate('/login')
-              }}
-              className="mt-5 inline-flex items-center gap-2 text-primary-strong font-medium hover:underline"
-            >
-              <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-                <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 9V5.25A2.25 2.25 0 0013.5 3h-6a2.25 2.25 0 00-2.25 2.25v13.5A2.25 2.25 0 007.5 21h6a2.25 2.25 0 002.25-2.25V15M12 9l-3 3m0 0l3 3m-3-3h12.75" />
-              </svg>
-              Switch role
-            </button>
           </div>
         )}
       </div>
